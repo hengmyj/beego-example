@@ -27,6 +27,8 @@ func main() {
 	logs.RegisterFormatter("pattern", f)
 
 	_ = logs.SetLogger("console",`{"formatter": "pattern"}`)
-
-	logs.Info("hello, world")
+	
+	log := logs.NewLogger()
+	log.SetLogger(logs.AdapterConsole, `{"formatter": "pattern"}`)
+	log.Info("hello, world")
 }
